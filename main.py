@@ -31,15 +31,15 @@ for i, track1 in enumerate(mid1.tracks):
         if msgs.type=='note_on' or msgs.type=='note_off':
             tim=tim+msgs.time
             if msgs.type == 'note_on':
-                #if msgs.note!=last_note:
-                if 0==0:
+                if msgs.note!=last_note:
+                #if 0==0:
                     #print('aaaaa')
                     #track.append(Message('note_on',note=msgs.note,channel=0,program= 40,time=msgs.time))
-                    track.append(Message('note_on',channel=6 ,note=msgs.note ,velocity=64, time=0))
+                    track.append(Message('note_on',channel=6 ,note=msgs.note ,velocity=msgs.velocity, time=0))
                     #track.append(Message('note_on', note=64, velocity=64,program=40 , time=32))
-                    track.append(Message('note_off', channel=6 ,note=msgs.note, velocity=64, time=tim*3))
+                    track.append(Message('note_off', channel=6 ,note=msgs.note, velocity=msgs.velocity , time=int(tim*0.5)))#time=后面玄学，请根据歌曲自行随缘
                     tim=0
-                    #last_note=msgs.note
+                    last_note=msgs.note
                 #print(last_note)
 
 #mid.tracks.append(track)
